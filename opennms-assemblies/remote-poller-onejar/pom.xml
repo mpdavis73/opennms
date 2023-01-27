@@ -50,24 +50,6 @@
             <version>${xmlApisVersion}</version>
           </dependency>
         </dependencies>
-        <executions>
-          <execution>
-            <id>unpack-keystore</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}</outputDirectory>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.opennms.core.build</groupId>
-                  <artifactId>org.opennms.core.build.keystore</artifactId>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-deploy-plugin</artifactId>
@@ -124,10 +106,6 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
-      <groupId>org.opennms.core.build</groupId>
-      <artifactId>org.opennms.core.build.keystore</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.opennms.features</groupId>
       <artifactId>org.opennms.features.remote-poller</artifactId>
