@@ -81,6 +81,7 @@ public class BlockingServiceLookup<C, F> implements ServiceLookup<C, F> {
         }
 
         // Couldn't find a service within the defined time
+        LOG.error("Timed out while waiting for service with search criteria " + criteria + " to become available in the service registry. Aborting.");
         return null;
     }
 
