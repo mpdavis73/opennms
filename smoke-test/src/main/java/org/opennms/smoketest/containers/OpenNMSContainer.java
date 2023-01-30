@@ -542,6 +542,19 @@ public class OpenNMSContainer extends GenericContainer implements KarafContainer
                 awaitHealthCheckSucceeded(container);
                 LOG.info("Health check passed.");
             }
+
+            final var karafLog = Paths.get("/opt", ALIAS, "logs", "karaf.log");
+            final var karaf = TestContainerUtils.getFileFromContainerAsString(container, karafLog);
+            final var lines = karaf.split("[\r\n]");
+            final var matches = new StringBuffer();
+            for (final var line : lines) {
+                if (line.matches("deploy")) {
+                    matches.append(line + "\n");
+                }
+            }
+            if (matches.length() != 0) {
+                throw new AssertionError("Found 'destroy' messages in karaf.log:\n" + matches);
+            }
         }
     }
 
