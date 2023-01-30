@@ -581,6 +581,7 @@ public class OpenNMSContainer extends GenericContainer implements KarafContainer
                 "manager.log",
                 "poller.log",
                 "provisiond.log",
+                "telemetryd.log",
                 "trapd.log",
                 "web.log");
         Path targetLogFolder = Paths.get("target", "logs", prefix, ALIAS);
